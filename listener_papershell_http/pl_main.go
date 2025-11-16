@@ -4,7 +4,7 @@ import (
 	"errors"
 	"io"
 
-	"github.com/Adaptix-Framework/axc2"
+	adaptix "github.com/Adaptix-Framework/axc2"
 )
 
 type Teamserver interface {
