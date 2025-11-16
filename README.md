@@ -1,60 +1,33 @@
+# PaperShell agent
 
-# Agent Extender Template
+Simple Powershell agent for Adaptix C2
 
-**config.json**
-* Change the path to .so goplaings (`_SO_FILE_HERE_`) in the `extender_file` parameter.
-* Set the agent's registration name (`_AGENT_`) in the `agent_name` parameter.
-* Set the 8-character hex value of the agent watermark (`_RANDOM_HEX_8_`) in the `agent_watermark`parameter.
-* Set the listeners supported by the agent (`_LISTENER_1_`, `_LISTENER_2_`) in the `listeners` parameter.
+Installation:
 
-**Makefile**
-* Replace `_AGENT_` with the agent's registration name.
+```
+cd listener_papershell_http
+make
+```
+Copy dist to AdaptixC2/dist/extenders/listener_papershell_http
 
-**ax_config.axs**
-* Register commands in the `RegisterCommands` function. 
-* Create an agent generation form in the `GenerateUI` function.
+```
+cd papershell_agent
+make
+```
+Copy dist to AdaptixC2/dist/extenders/papershell_agent
 
-**pl_agent.go**
-* Specify your code inside the functions in the `START CODE HERE` and `END CODE HERE` tags.
+Add new extenders to AdaptixC2 profile.json:
 
-By default, no modification to the **pl_main.go** file is required.
+```json
+"extenders": [
+      "extenders/beacon_listener_http/config.json",
+      "extenders/beacon_listener_smb/config.json",
+      "extenders/beacon_listener_tcp/config.json",
+      "extenders/beacon_agent/config.json",
+      "extenders/gopher_listener_tcp/config.json",
+      "extenders/gopher_agent/config.json",
 
-
-
-# Listener (External) Extender Template
-
-**config.json**
-* Change the path to .so goplaings (`_SO_FILE_HERE_`) in the `extender_file` parameter.
-* Set the listener's registration name (`_LISTENER_`) in the `listener_name` parameter.
-* Set protocol designation (`_PROTOCOL_`) in the `protocol` parameter.
-
-**Makefile**
-* Replace `_LISTENER_` with the listener's registration name.
-
-**ax_config.axs**
-* Create a listener creation form in the `ListenerUI` function.
-
-**pl_listener.go**
-* Specify your code inside the functions in the `START CODE HERE` and `END CODE HERE` tags.
-
-By default, no modification to the **pl_main.go** file is required.
-
-
-
-# Listener (Internal) Extender Template
-
-**config.json**
-* Change the path to .so goplaings (`_SO_FILE_HERE_`) in the `extender_file` parameter.
-* Set the listener's registration name (`_LISTENER_`) in the `listener_name` parameter.
-* Set protocol designation (`_PROTOCOL_`) in the `protocol` parameter.
-
-**Makefile**
-* Replace `_LISTENER_` with the listener's registration name.
-
-**ax_config.axs**
-* Create a listener creation form in the `ListenerUI` function.
-
-**pl_listener.go**
-* Specify your code inside the functions in the `START CODE HERE` and `END CODE HERE` tags.
-
-By default, no modification to the **pl_main.go** file is required.
+      "extenders/listener_papershell_http/config.json",
+      "extenders/papershell_agent/config.json"
+]
+```
