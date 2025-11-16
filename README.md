@@ -1,6 +1,6 @@
 # PaperShell agent
 
-[](./docs/cover.png)
+![](docs/cover.png)
 
 Simple Powershell agent for Adaptix C2
 
