@@ -1,5 +1,7 @@
 # PaperShell agent
 
+[](./docs/cover.png)
+
 Simple Powershell agent for Adaptix C2
 
 Installation:
